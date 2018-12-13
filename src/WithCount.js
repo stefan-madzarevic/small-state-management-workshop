@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import {increment} from "./utils/calculations";
 
-const WithCount = (WrappedComponent) => class extends Component {
+class WithCount extends Component {
     state = { count: 0 };
     onIncrementButtonClick = () => {
         this.setState(increment)
     }
     render() {
-        return <WrappedComponent count={this.state.count} onIncrement={this.onIncrementButtonClick} step={this.props.step}/>
+        return (
+            <div>
+                {
+                    this.props.render(
+                        this.state.count,
+                        this.onIncrementButtonClick,
+                        this.props.step
+                    )
+                }
+            </div>
+        )
     }
 };
 
