@@ -8,7 +8,6 @@ class App extends Component {
     this.setState({count: this.state.count + 1});
     this.setState({count: this.state.count + 1});
     this.setState({count: this.state.count + 1});
-    console.log(this.state.count);
   }
   render() {
     return (
@@ -16,10 +15,11 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
             <p>
-              Clicking on increment button will <code>console.log(this.state.count)</code> which will be 0.
-              <br/>That is happening because setState is asynchronous function.
+              Clicking on increment button will change it to {this.state.count + 1}.
+              <br/>That is happening because state changes will be queued up.
             </p>
           <button className="pure-material-button-contained" onClick={this.increment}>Increment</button>
+            <p> Current Count: {this.state.count}</p>
         </header>
       </div>
     );
