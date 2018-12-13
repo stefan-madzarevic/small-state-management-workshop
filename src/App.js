@@ -5,9 +5,9 @@ import './App.css';
 class App extends Component {
   state = { count: 0};
   increment = () => {
-    this.setState({count: this.state.count + 1});
-    this.setState({count: this.state.count + 1});
-    this.setState({count: this.state.count + 1});
+    this.setState((state) => { return {count: state.count + 1}});
+    this.setState((state) => { return {count: state.count + 1}});
+    this.setState((state) => { return {count: state.count + 1}});
   }
   render() {
     return (
@@ -15,8 +15,8 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
             <p>
-              Clicking on increment button will change it to {this.state.count + 1}.
-              <br/>That is happening because state changes will be queued up.
+              Clicking on increment button will change it to {this.state.count + 3}.
+              <br/>That is happening because when we pass function to setState it will play through each of them.
             </p>
           <button className="pure-material-button-contained" onClick={this.increment}>Increment</button>
             <p> Current Count: {this.state.count}</p>
